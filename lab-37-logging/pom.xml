@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lab-37</artifactId>
+    <artifactId>lab-37-logging</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>lab-37-logging-demo</module>
