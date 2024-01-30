@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="processEngineConfiguration"
+          class="org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="jdbcUrl" value="jdbc:mysql://172.16.0.17:3306/flowable-test?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC&amp;nullCatalogMeansCurrent=true" /><property name="jdbcDriver" value="com.mysql.cj.jdbc.Driver" />
+        <property name="jdbcUsername" value="bdp" />
+        <property name="jdbcPassword" value="bdp@CT14" />
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="asyncExecutorActivate" value="false" />
+    </bean>
+</beans>

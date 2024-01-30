@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.7.2">
+  <process id="holiday-inclusive" name="请假流程-包含网关" isExecutable="true">
+    <startEvent id="startEvent1" flowable:formFieldValidation="true"></startEvent>
+    <userTask id="sid-476CA7BE-7D41-4659-AE79-205293A597E3" name="创建请假单" flowable:assignee="zhangsan" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-828CEAF3-D511-49F4-8B63-AF626F613EA3" sourceRef="startEvent1" targetRef="sid-476CA7BE-7D41-4659-AE79-205293A597E3"></sequenceFlow>
+    <inclusiveGateway id="sid-F3C51E46-FF7C-4C52-BB73-106984638028"></inclusiveGateway>
+    <sequenceFlow id="sid-9B96D298-47C9-4482-A382-7049BC5E7DD3" sourceRef="sid-476CA7BE-7D41-4659-AE79-205293A597E3" targetRef="sid-F3C51E46-FF7C-4C52-BB73-106984638028"></sequenceFlow>
+    <userTask id="sid-537BE8F8-69AD-4600-BFE9-F9085BB9160A" name="人事审批" flowable:assignee="i2" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-5B0352EF-B0DE-4855-908D-65B2C547B4CF" sourceRef="sid-F3C51E46-FF7C-4C52-BB73-106984638028" targetRef="sid-537BE8F8-69AD-4600-BFE9-F9085BB9160A"></sequenceFlow>
+    <userTask id="sid-6064E86F-DD06-40FB-9FE9-1C06C709A95B" name="项目经理审批" flowable:assignee="i1" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-9EB1D185-B579-4958-929F-3B84DAA6C7EB" name="技术经理审批" flowable:assignee="i3" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <inclusiveGateway id="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C"></inclusiveGateway>
+    <sequenceFlow id="sid-40B31F6F-487A-47DC-9E33-98D0CE67E4A6" sourceRef="sid-537BE8F8-69AD-4600-BFE9-F9085BB9160A" targetRef="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C"></sequenceFlow>
+    <sequenceFlow id="sid-EEDDE31B-E6FF-4DD7-8C93-7285D659820D" sourceRef="sid-9EB1D185-B579-4958-929F-3B84DAA6C7EB" targetRef="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C"></sequenceFlow>
+    <exclusiveGateway id="sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB"></exclusiveGateway>
+    <sequenceFlow id="sid-3CA57F79-6FF2-4E23-A739-6B9405C1EFDF" sourceRef="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C" targetRef="sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB"></sequenceFlow>
+    <userTask id="sid-42963C12-8B11-4CA4-9CB4-1591E33619FC" name="总经理审批" flowable:assignee="wz" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <endEvent id="sid-F6FE513E-ACB0-4FF3-BEA3-0950654604FB"></endEvent>
+    <sequenceFlow id="sid-71AB47AB-A17C-403A-B75D-1CD55A599796" sourceRef="sid-42963C12-8B11-4CA4-9CB4-1591E33619FC" targetRef="sid-F6FE513E-ACB0-4FF3-BEA3-0950654604FB"></sequenceFlow>
+    <sequenceFlow id="sid-49E0D48D-D4B1-4F72-A958-C6F89343C654" sourceRef="sid-6064E86F-DD06-40FB-9FE9-1C06C709A95B" targetRef="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C"></sequenceFlow>
+    <sequenceFlow id="sid-26BB472C-70B7-45E0-933F-9CAC8616C57A" sourceRef="sid-F3C51E46-FF7C-4C52-BB73-106984638028" targetRef="sid-6064E86F-DD06-40FB-9FE9-1C06C709A95B">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${num>3}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-864C34F0-4286-4BCA-B6B3-BAC82059862F" sourceRef="sid-F3C51E46-FF7C-4C52-BB73-106984638028" targetRef="sid-9EB1D185-B579-4958-929F-3B84DAA6C7EB">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${num<=3}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-D3E5029F-65BC-4AA3-B296-00122F2E731E" sourceRef="sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB" targetRef="sid-42963C12-8B11-4CA4-9CB4-1591E33619FC">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${num>3}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-32C14BC5-97BD-41BA-A548-3E61FF5EE488" sourceRef="sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB" targetRef="sid-F6FE513E-ACB0-4FF3-BEA3-0950654604FB">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${num<=3}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_holiday-inclusive">
+    <bpmndi:BPMNPlane bpmnElement="holiday-inclusive" id="BPMNPlane_holiday-inclusive">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="298.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-476CA7BE-7D41-4659-AE79-205293A597E3" id="BPMNShape_sid-476CA7BE-7D41-4659-AE79-205293A597E3">
+        <omgdc:Bounds height="80.0" width="100.0" x="155.0" y="270.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-F3C51E46-FF7C-4C52-BB73-106984638028" id="BPMNShape_sid-F3C51E46-FF7C-4C52-BB73-106984638028">
+        <omgdc:Bounds height="40.0" width="40.0" x="416.5" y="292.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-537BE8F8-69AD-4600-BFE9-F9085BB9160A" id="BPMNShape_sid-537BE8F8-69AD-4600-BFE9-F9085BB9160A">
+        <omgdc:Bounds height="80.0" width="100.0" x="540.0" y="273.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-6064E86F-DD06-40FB-9FE9-1C06C709A95B" id="BPMNShape_sid-6064E86F-DD06-40FB-9FE9-1C06C709A95B">
+        <omgdc:Bounds height="80.0" width="100.0" x="540.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9EB1D185-B579-4958-929F-3B84DAA6C7EB" id="BPMNShape_sid-9EB1D185-B579-4958-929F-3B84DAA6C7EB">
+        <omgdc:Bounds height="80.0" width="100.0" x="555.0" y="420.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C" id="BPMNShape_sid-DC495913-E62B-4E3D-B27D-E43E44FD4D5C">
+        <omgdc:Bounds height="40.0" width="40.0" x="729.5" y="279.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB" id="BPMNShape_sid-2E67DCE2-F1D8-4CD7-8C1B-C9517E6E78CB">
+        <omgdc:Bounds height="40.0" width="40.0" x="814.5" y="279.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-42963C12-8B11-4CA4-9CB4-1591E33619FC" id="BPMNShape_sid-42963C12-8B11-4CA4-9CB4-1591E33619FC">
+        <omgdc:Bounds height="80.0" width="100.0" x="990.0" y="259.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-F6FE513E-ACB0-4FF3-BEA3-0950654604FB" id="BPMNShape_sid-F6FE513E-ACB0-4FF3-BEA3-0950654604FB">
+        <omgdc:Bounds height="28.0" width="28.0" x="1135.0" y="420.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-3CA57F79-6FF2-4E23-A739-6B9405C1EFDF" id="BPMNEdge_sid-3CA57F79-6FF2-4E23-A739-6B9405C1EFDF" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="20.5" flowable:targetDockerY="20.5">
+        <omgdi:waypoint x="768.9388660399505" y="299.5"></omgdi:waypoint>
+        <omgdi:waypoint x="815.0" y="299.5"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-864C34F0-4286-4BCA-B6B3-BAC82059862F" id="BPMNEdge_sid-864C34F0-4286-4BCA-B6B3-BAC82059862F" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="437.0" y="331.4435806233062"></omgdi:waypoint>
+        <omgdi:waypoint x="437.0" y="460.0"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="460.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5B0352EF-B0DE-4855-908D-65B2C547B4CF" id="BPMNEdge_sid-5B0352EF-B0DE-4855-908D-65B2C547B4CF" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="455.88214518229165" y="312.5617263843648"></omgdi:waypoint>
+        <omgdi:waypoint x="539.9999999999991" y="312.83660130718954"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-71AB47AB-A17C-403A-B75D-1CD55A599796" id="BPMNEdge_sid-71AB47AB-A17C-403A-B75D-1CD55A599796" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="1089.9499999999339" y="299.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1149.0" y="299.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1149.0" y="420.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-49E0D48D-D4B1-4F72-A958-C6F89343C654" id="BPMNEdge_sid-49E0D48D-D4B1-4F72-A958-C6F89343C654" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="627.7042899408284" y="169.95"></omgdi:waypoint>
+        <omgdi:waypoint x="739.7891933028919" y="288.70944917833236"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-40B31F6F-487A-47DC-9E33-98D0CE67E4A6" id="BPMNEdge_sid-40B31F6F-487A-47DC-9E33-98D0CE67E4A6" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="639.9499999999995" y="308.6112852664577"></omgdi:waypoint>
+        <omgdi:waypoint x="731.1138328530259" y="300.6097982708934"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-EEDDE31B-E6FF-4DD7-8C93-7285D659820D" id="BPMNEdge_sid-EEDDE31B-E6FF-4DD7-8C93-7285D659820D" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="640.8557453416149" y="420.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0400981996727" y="309.5137479541735"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-32C14BC5-97BD-41BA-A548-3E61FF5EE488" id="BPMNEdge_sid-32C14BC5-97BD-41BA-A548-3E61FF5EE488" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="835.0" y="318.4429606240713"></omgdi:waypoint>
+        <omgdi:waypoint x="835.0" y="434.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1135.0" y="434.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D3E5029F-65BC-4AA3-B296-00122F2E731E" id="BPMNEdge_sid-D3E5029F-65BC-4AA3-B296-00122F2E731E" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="853.9916788856304" y="299.4535452322738"></omgdi:waypoint>
+        <omgdi:waypoint x="989.9999999999989" y="299.1218292682927"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-9B96D298-47C9-4482-A382-7049BC5E7DD3" id="BPMNEdge_sid-9B96D298-47C9-4482-A382-7049BC5E7DD3" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="20.0" flowable:targetDockerY="20.0">
+        <omgdi:waypoint x="254.94999999999914" y="310.4315334773218"></omgdi:waypoint>
+        <omgdi:waypoint x="416.62639126712327" y="311.8286937901499"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-26BB472C-70B7-45E0-933F-9CAC8616C57A" id="BPMNEdge_sid-26BB472C-70B7-45E0-933F-9CAC8616C57A" flowable:sourceDockerX="20.5" flowable:sourceDockerY="20.5" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="437.0" y="292.5"></omgdi:waypoint>
+        <omgdi:waypoint x="437.0" y="130.0"></omgdi:waypoint>
+        <omgdi:waypoint x="540.0" y="130.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-828CEAF3-D511-49F4-8B63-AF626F613EA3" id="BPMNEdge_sid-828CEAF3-D511-49F4-8B63-AF626F613EA3" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="119.94340693027804" y="312.55019845360266"></omgdi:waypoint>
+        <omgdi:waypoint x="154.9999999999992" y="311.4985"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
