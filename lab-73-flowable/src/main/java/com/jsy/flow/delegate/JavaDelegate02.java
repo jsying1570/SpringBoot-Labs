@@ -1,0 +1,18 @@
+package com.jsy.flow.delegate;
+
+import org.flowable.engine.delegate.BpmnError;
+import org.flowable.engine.delegate.DelegateExecution;
+import org.flowable.engine.delegate.JavaDelegate;
+
+import java.time.LocalDateTime;
+
+/**
+ * Java代理类
+ */
+public class JavaDelegate02 implements JavaDelegate {
+    @Override
+    public void execute(DelegateExecution execution) {
+        System.out.println("--服务任务--JavaDelegate02  "  + LocalDateTime.now());
+        //throw new BpmnError("payFail");
+    }
+}

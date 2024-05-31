@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@DS(DBConstants.DATASOURCE_USERS)
+//@DS(DBConstants.DATASOURCE_USERS)
 public interface UserMapper {
 
     UserDO selectById(@Param("id") Integer id);

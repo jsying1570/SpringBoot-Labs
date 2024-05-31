@@ -1,0 +1,40 @@
+{
+	"name": "报销的表单",
+	"key": "form-bx",
+	"version": 0,
+	"fields": [{
+		"fieldType": "FormField",
+		"id": "amount",
+		"name": "报销金额",
+		"type": "text",
+		"value": null,
+		"required": false,
+		"readOnly": false,
+		"overrideId": true,
+		"placeholder": "0",
+		"layout": null
+	}, {
+		"fieldType": "FormField",
+		"id": "reason",
+		"name": "原因",
+		"type": "multi-line-text",
+		"value": null,
+		"required": false,
+		"readOnly": false,
+		"overrideId": true,
+		"placeholder": null,
+		"layout": null
+	}, {
+		"fieldType": "FormField",
+		"id": "bxDate",
+		"name": "报销日期",
+		"type": "date",
+		"value": null,
+		"required": false,
+		"readOnly": false,
+		"overrideId": true,
+		"placeholder": null,
+		"layout": null
+	}],
+	"outcomes": []
+}

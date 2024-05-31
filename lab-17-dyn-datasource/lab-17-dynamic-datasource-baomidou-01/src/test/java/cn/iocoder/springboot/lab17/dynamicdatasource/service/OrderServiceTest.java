@@ -15,8 +15,9 @@ public class OrderServiceTest {
     private OrderService orderService;
 
     @Test
-    public void testMethod01() {
+    public void testMethod01() throws InterruptedException {
         orderService.method01();
+        Thread.sleep(1000000);
     }
 
     @Test

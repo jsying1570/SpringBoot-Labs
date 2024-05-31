@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    gs:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://172.16.0.17:3306/abc?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: bdp@CT14
+    ny:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://172.16.0.17:3306/icbc?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: bdp@CT14
+  application:
+    name: multi-data-source
+logging:
+  level:
+    com:
+      example: debug
+seata:
+  enabled: true
+  registry:
+    type: file
+  config:
+    type: file
+  service:
+    vgroup-mapping:
+      default_tx_group: default #指定seata集群名称，默认值为default,default_tx_group组名，可以自定义
+    grouplist:
+      default: 127.0.0.1:8091  #指定seata集群得地址
+    disable-global-transaction: false #默认为false （开始全局事务）
+  application-id: abc # 初始化TM和RM使用
+  tx-service-group: default_tx_group # 必须与vgroup-mapping配置得key值保持一致
+  enable-auto-data-source-proxy: true # 设置datasource自动代理,如果关闭，就需要自己手动添加数据源
+  data-source-proxy-mode: XA          # 指定代理模式 XA

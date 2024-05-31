@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.7.2">
+  <process id="lisener-task-listener" name="lisener-task-listener" isExecutable="true">
+    <documentation>lisener-task-listener</documentation>
+    <startEvent id="startEvent1" flowable:formFieldValidation="true"></startEvent>
+    <userTask id="sid-39D138D6-AC4C-4627-ACFB-F323A5C899A3" name="用户任务" flowable:assignee="${user1}" flowable:formFieldValidation="true">
+      <extensionElements>
+        <flowable:taskListener event="create" class="com.boge.flow.listener.MyTaskListener1"></flowable:taskListener>
+        <flowable:taskListener event="assignment" class="com.boge.flow.listener.MyTaskListener1"></flowable:taskListener>
+        <flowable:taskListener event="complete" class="com.boge.flow.listener.MyTaskListener1"></flowable:taskListener>
+        <flowable:taskListener event="delete" class="com.boge.flow.listener.MyTaskListener1"></flowable:taskListener>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <endEvent id="sid-FA24E000-3F88-4C9C-9081-A94A52C6F9E2"></endEvent>
+    <sequenceFlow id="sid-86C5B54D-9F47-41A1-8AED-1EC1725B4611" sourceRef="sid-39D138D6-AC4C-4627-ACFB-F323A5C899A3" targetRef="sid-FA24E000-3F88-4C9C-9081-A94A52C6F9E2"></sequenceFlow>
+    <sequenceFlow id="sid-B7D0C8AA-DE51-4B5C-9B4C-4005A669FBBF" sourceRef="startEvent1" targetRef="sid-39D138D6-AC4C-4627-ACFB-F323A5C899A3"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_lisener-task-listener">
+    <bpmndi:BPMNPlane bpmnElement="lisener-task-listener" id="BPMNPlane_lisener-task-listener">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-39D138D6-AC4C-4627-ACFB-F323A5C899A3" id="BPMNShape_sid-39D138D6-AC4C-4627-ACFB-F323A5C899A3">
+        <omgdc:Bounds height="80.0" width="100.0" x="270.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-FA24E000-3F88-4C9C-9081-A94A52C6F9E2" id="BPMNShape_sid-FA24E000-3F88-4C9C-9081-A94A52C6F9E2">
+        <omgdc:Bounds height="28.0" width="28.0" x="510.0" y="164.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-86C5B54D-9F47-41A1-8AED-1EC1725B4611" id="BPMNEdge_sid-86C5B54D-9F47-41A1-8AED-1EC1725B4611" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="369.94999999992945" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="510.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B7D0C8AA-DE51-4B5C-9B4C-4005A669FBBF" id="BPMNEdge_sid-B7D0C8AA-DE51-4B5C-9B4C-4005A669FBBF" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="129.94999956503588" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="269.99999999995566" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
