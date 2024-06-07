@@ -1,25 +1,21 @@
 package cn.iocoder.springboot.lab03.kafkademo.message;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 示例 01 的 Message 消息
  */
+@Setter
+@Getter
 public class Demo01Message {
 
-    public static final String TOPIC = "test1";
-
+    public static final String TOPIC = "demo01";
     /**
      * 编号
      */
     private Integer id;
-
-    public Demo01Message setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
 
     @Override
     public String toString() {

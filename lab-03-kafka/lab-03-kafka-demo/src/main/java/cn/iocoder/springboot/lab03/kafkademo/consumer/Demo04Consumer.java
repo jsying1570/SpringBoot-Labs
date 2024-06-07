@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Component
+//@Component
 public class Demo04Consumer {
 
-    private AtomicInteger count = new AtomicInteger(0);
+    private final AtomicInteger count = new AtomicInteger(0);
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @KafkaListener(topics = Demo04Message.TOPIC,
             groupId = "demo04-consumer-group-" + Demo04Message.TOPIC)

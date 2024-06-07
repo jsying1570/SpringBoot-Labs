@@ -15,12 +15,12 @@ public class Demo01Producer {
     @Resource
     private KafkaTemplate<Object, Object> kafkaTemplate;
 
-    public SendResult syncSend(Integer id) throws ExecutionException, InterruptedException {
+    public SendResult<Object,Object> syncSend(Integer id) throws ExecutionException, InterruptedException {
         // 创建 Demo01Message 消息
         Demo01Message message = new Demo01Message();
         message.setId(id);
         // 同步发送消息
-        return kafkaTemplate.send(Demo01Message.TOPIC, message).get();
+        return kafkaTemplate.send(Demo01Message.TOPIC,message).get();
     }
 
     public ListenableFuture<SendResult<Object, Object>> asyncSend(Integer id) {

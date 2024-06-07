@@ -35,6 +35,8 @@
         <module>lab-73-flowable</module>
         <module>lab-74-juc</module>
         <module>lab-33-distributed-transaction/xa-multidatasource</module>
+        <module>lab-03-kafka/lab-03-kafka-client-demo</module>
+        <module>lab-17-dyn-datasource/lab-17-dynamic-datasource-baomidou-03</module>
         <!--        <module>lab-25</module>-->
 <!--        <module>lab-26</module>-->
 <!--        <module>lab-27</module>-->

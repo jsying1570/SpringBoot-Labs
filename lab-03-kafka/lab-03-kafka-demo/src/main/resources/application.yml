@@ -1,0 +1,46 @@
+spring:
+  # Kafka 配置项，对应 KafkaProperties 配置类
+  kafka:
+    bootstrap-servers: node1:9092,node2:9092,node3:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
+    # Kafka Producer 配置项
+    producer:
+      acks: 1 # 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
+      retries: 1 # 发送失败时，重试发送的次数
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # 消息的 key 的序列化
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer # 消息的 value 的序列化
+    # Kafka Consumer 配置项
+    consumer:
+      auto-offset-reset: earliest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: cn.iocoder.springboot.lab03.kafkademo.message    #用json序列化的时候，要配置信任的类，不然会很酸爽
+    # Kafka Consumer Listener 监听器配置
+    listener:
+      missing-topics-fatal: false # 消费监听接口监听的主题不存在时，默认会报错。所以通过设置为 false ，解决报错
+    properties:
+#       加密协议，目前支持 SASL_SSL、SASL_PLAINTEXT 协议
+      "security.protocol": SASL_PLAINTEXT
+#       域名
+      "kerberos.domain.name": HADOOP.CHINATELECOM.CN
+#       服务名
+      "sasl.kerberos.service.name": kafka
+logging:
+  level:
+    org:
+      springframework:
+        kafka: ERROR # spring-kafka INFO 日志太多了，所以我们限制只打印 ERROR 级别
+      apache:
+        kafka: ERROR # kafka INFO 日志太多了，所以我们限制只打印 ERROR 级别
+server:
+  port: 8081
+
+#  earliest
+#  当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+#  latest
+#  当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
+#  none
+#  topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常

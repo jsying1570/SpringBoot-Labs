@@ -14,10 +14,14 @@ public class OrderServiceTest {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * 源码查看 SpringManagedTransaction这类
+     * @throws InterruptedException 中断异常
+     */
     @Test
     public void testMethod01() throws InterruptedException {
         orderService.method01();
-        Thread.sleep(1000000);
+//        Thread.sleep(1000000);
     }
 
     @Test

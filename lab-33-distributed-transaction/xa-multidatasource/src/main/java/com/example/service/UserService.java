@@ -6,6 +6,7 @@ import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserService {
 
@@ -21,6 +22,13 @@ public class UserService {
 //        Thread.sleep(40000);
         int i = 10 / 0;
         icbcMapper.increaseMoney(toId, money);
+
+        new Thread(new Runnable() {
+            public void run() {
+                abcMapper.reduceMoney(fromId, money);
+            }
+        });
+
     }
 
 }

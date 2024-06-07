@@ -1,0 +1,27 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: seata-xa-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.239.11:3306/seata_order?serverTimezone=UTC
+    username: root
+    password: houchen
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+seata:
+  service:
+    vgroup-mapping:
+      shangma: default
+    grouplist:
+      default: 127.0.0.1:8091
+    disable-global-transaction: false #默认为false 可以不配置
+  tx-service-group: shangma
+  enable-auto-data-source-proxy: true
+  data-source-proxy-mode: XA

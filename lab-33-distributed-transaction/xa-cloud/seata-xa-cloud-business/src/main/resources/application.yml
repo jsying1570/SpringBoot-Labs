@@ -1,0 +1,27 @@
+server:
+  port: 8103
+spring:
+  application:
+    name: seata-xa-business
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+seata:
+  service:
+    vgroup-mapping:
+      seata-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+    disable-global-transaction: false #默认为false 可以不配置
+  tx-service-group: seata-group
+  enable-auto-data-source-proxy: true
+  data-source-proxy-mode: XA
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+  sentinel:
+    enabled: true
