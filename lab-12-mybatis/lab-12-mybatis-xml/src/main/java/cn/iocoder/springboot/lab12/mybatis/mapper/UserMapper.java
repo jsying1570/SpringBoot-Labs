@@ -20,6 +20,6 @@ public interface UserMapper {
 
     UserDO selectByUsername(@Param("username") String username);
 
-    List<UserDO> selectByIds(@Param("ids")Collection<Integer> ids);
+    List<UserDO> selectByIds(@Param("ids") Collection<Integer> ids);
 
 }

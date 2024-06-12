@@ -14,5 +14,5 @@ public interface OrderMapper {
     List<OrderDO> selectListByUserId(@Param("userId") Integer userId);
 
     void insert(OrderDO order);
-
 }
+
