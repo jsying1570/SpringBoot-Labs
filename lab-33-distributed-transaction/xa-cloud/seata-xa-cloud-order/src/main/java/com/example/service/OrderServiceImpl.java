@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderMapper orderMapper;
+    private OrderMapper orderMapper;
 
     @Override
     public void addOrder(Order order) {
@@ -25,5 +25,6 @@ public class OrderServiceImpl implements OrderService {
             order.setId(System.nanoTime());
         }
         orderMapper.addOrder(order);
+        System.out.println("orderId:"+order.getId());
     }
 }

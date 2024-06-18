@@ -18,7 +18,7 @@ public class GoodServiceImpl implements GoodService {
     private GoodMapper goodMapper;
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
 
     @Override
@@ -32,8 +32,7 @@ public class GoodServiceImpl implements GoodService {
         log.info("全局事务ID：{}", RootContext.getXID());
         log.info("事务模式：{}", RootContext.getBranchType());
 
-        log.info("datasource",dataSource);
-
+        log.info("数据源 {}", dataSource);
 
         Good good = findGoodById(goodId);
         if (good.getGoodStock() < stockNum) {

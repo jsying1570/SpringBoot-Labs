@@ -1,16 +1,15 @@
 package com.example.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum OrderStatus {
-    CREATE("创建");
+    CREATE("create");
 
-
-    private String value;
+    private final String value;
 
     OrderStatus(String value) {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
-    }
 }

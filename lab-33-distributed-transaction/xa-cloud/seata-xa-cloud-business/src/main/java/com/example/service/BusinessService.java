@@ -51,9 +51,7 @@ public class BusinessService {
         restTemplate.getForObject(String.format(Urls.REDUCE_MONEY, accountId, amount), Object.class);
 
     }*/
-
-
-    @GlobalTransactional
+//    @GlobalTransactional
     public void placeOrder(int accountId, int goodId, int num) {
         log.info("order是否在事务中：{}", RootContext.inGlobalTransaction());
         log.info("全局事务ID：{}", RootContext.getXID());

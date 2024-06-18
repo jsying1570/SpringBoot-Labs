@@ -17,8 +17,7 @@ public class GoodController {
 
     @GetMapping("/{id}")
     public Good findById(@PathVariable("id") int id) {
-        Good goodById = goodService.findGoodById(id);
-        return goodById;
+        return goodService.findGoodById(id);
     }
 
 

@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.hc.mapper")
+@MapperScan("com.example.mapper")
 public class XAAccountApp {
 
     public static void main(String[] args) {

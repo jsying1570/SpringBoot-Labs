@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+//定义包
+package com.jsy.base.netty.grpc;
+
+option java_package = "com.jsy.base.netty.grpc";
+option java_outer_classname = "StudentProto";
+
+//是否生成多个文件
+option java_multiple_files = true;
+
+service StudentService {
+    //    普通请求
+    rpc GetRealNameByUsername (MyRequest) returns (MyResponse) {}
+    //    相应以流的方式
+    rpc GetStudentsByAge (StudentRequest) returns (stream StudentResponse) {}
+    //    请求以流的方式
+    rpc GetStudentsWrapperByAges (stream StudentRequest) returns (StudentResponseList) {}
+    //请求和相应都以流的方式
+    rpc BiTalk (stream StreamRequest) returns (stream StreamResponse) {}
+}
+
+message MyRequest {
+    string user_name = 1;
+}
+
+message MyResponse {
+    string real_name = 1;
+}
+
+message StudentRequest {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message StudentResponse {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message StudentResponseList {
+    repeated StudentResponse student_response = 1;
+}
+
+message StreamRequest {
+    string request_info = 1;
+}
+message StreamResponse {
+    string response_info = 1;
+}

@@ -6,7 +6,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class Order {
-
     private Long id;
     private Integer accountId;
     private Integer goodId;
