@@ -45,7 +45,7 @@ public class RunAsyncTest {
     }
 
     @Test
-    public void test03() throws ExecutionException, InterruptedException, TimeoutException {
+    public void test03() {
         // 自定义线程池
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         CompletableFuture<Void> cf = CompletableFuture.runAsync(() -> {
