@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class HttpAccessAspect {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Around("@within(org.springframework.stereotype.Controller)" +
         "|| @within(org.springframework.web.bind.annotation.RestController)")
