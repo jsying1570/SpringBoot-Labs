@@ -32,7 +32,7 @@ public class OrderMapperTest {
     @Test
     public void testInsert() {
         OrderDO order = new OrderDO();
-        order.setUserId(3);
+        order.setUserId(4);
         orderMapper.insert(order);
     }
 
