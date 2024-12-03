@@ -1,4 +1,4 @@
-package cn.iocoder.springboot.lab72.juicefs;
+package com.salter.juicefs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
