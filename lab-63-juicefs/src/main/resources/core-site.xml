@@ -31,7 +31,7 @@
     </property>
     <property>
         <name>juicefs.superuser</name>
-        <value>salter</value>
+        <value>root</value>
     </property>
     <property>
         <name>juicefs.cache-dir</name>

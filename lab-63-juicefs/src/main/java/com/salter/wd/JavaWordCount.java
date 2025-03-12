@@ -19,6 +19,7 @@ public final class JavaWordCount {
     SparkSession spark = SparkSession
       .builder()
       .appName("JavaWordCount")
+            
       .getOrCreate();
 
     JavaRDD<String> lines = spark.read().textFile("jfs://juicefs-test3/").javaRDD();
