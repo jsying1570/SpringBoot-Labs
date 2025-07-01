@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/**
+ * @author salter
+ */
 @Setter
 @Getter
 public class MathCalculate implements Serializable {
@@ -50,10 +53,25 @@ public class MathCalculate implements Serializable {
 
     @Getter
     public static enum OperateEnum {
+        /**
+         * 加法
+         */
         ADD("+"),
+        /**
+         * 减法
+         */
         SUBTRACT("-"),
+        /**
+         * 乘法
+         */
         MULTIPLY("*"),
+        /**
+         * 除法
+         */
         DIVIDE("/"),
+        /**
+         * 结果
+         */
         RESULT("="),
         ;
         private final String val;

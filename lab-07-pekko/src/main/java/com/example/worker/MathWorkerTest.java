@@ -8,6 +8,9 @@ import com.typesafe.config.ConfigFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author salter
+ */
 public class MathWorkerTest {
 
     public static void main(String[] args) {

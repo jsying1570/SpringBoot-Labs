@@ -10,8 +10,27 @@ import com.typesafe.config.ConfigFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
+/**
+ * @author salter
+ */
 public class MasterCalculateTest {
+
+    /**
+     * 创建线程池
+     */
+    private static final ThreadPoolExecutor EXECUTOR = new ThreadPoolExecutor(
+            5,
+            10,
+            60L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(100),
+            new CustomThreadFactory(),
+            new ThreadPoolExecutor.CallerRunsPolicy()
+    );
 
     public static void main(String[] args) {
         Map<String, Object> propMap = new HashMap<>();
@@ -32,9 +51,23 @@ public class MasterCalculateTest {
          * 5、worker-actor ： 注册ActorRef时指定的actor名称，actor就是根据这个名称查找。
          */
         ActorSelection actorSelection = system.actorSelection("akka.tcp://math-worker@127.0.0.1:8899/user/worker-actor");
-        for(int i =0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             final int num = i;
-            new Thread(() -> actorSelection.tell(new MathCalculate(num, num, MathCalculate.OperateEnum.ADD), masterActor)).start();
+            //给远程的actor发送消息
+            EXECUTOR.execute(() -> {
+                actorSelection.tell(new MathCalculate(num, num, MathCalculate.OperateEnum.ADD), masterActor);
+            });
         }
+    }
+}
+
+class CustomThreadFactory implements ThreadFactory {
+    private int threadCount = 0;
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread thread = new Thread(r, "CustomThread-" + (++threadCount));
+        // 设置为守护线程，避免阻塞JVM退出
+        thread.setDaemon(true);
+        return thread;
     }
 }

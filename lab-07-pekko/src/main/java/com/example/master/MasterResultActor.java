@@ -3,6 +3,9 @@ import akka.actor.UntypedActor;
 import com.alibaba.fastjson.JSONObject;
 import com.example.message.MathCalculate;
 
+/**
+ * @author salter
+ */
 public class MasterResultActor extends UntypedActor {
     @Override
     public void preStart() throws Exception {
@@ -17,6 +20,7 @@ public class MasterResultActor extends UntypedActor {
         } else if(message instanceof MathCalculate) {
             math = (MathCalculate) message;
         }
+        assert math != null;
         System.out.println("calculate result: " + math.getNum1() + " " + math.getOp() + " " + math.getNum2() + " = " + math.getResult());
     }
 }
