@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author salter
+ */
 @SpringBootApplication
 public class Application {
 
@@ -17,7 +20,7 @@ public class Application {
     }
 
     @Component
-    public class OrderPropertiesCommandLineRunner implements CommandLineRunner {
+    public static class OrderPropertiesCommandLineRunner implements CommandLineRunner {
 
         private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -33,7 +36,7 @@ public class Application {
     }
 
     @Component
-    public class ValueCommandLineRunner implements CommandLineRunner {
+    public static class ValueCommandLineRunner implements CommandLineRunner {
 
         private final Logger logger = LoggerFactory.getLogger(getClass());
 

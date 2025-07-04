@@ -3,6 +3,9 @@ package cn.iocoder.springboot.lab43.propertydemo;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author salter
+ */
 @Component
 @ConfigurationProperties(prefix = "order")
 public class OrderProperties {
@@ -16,11 +19,6 @@ public class OrderProperties {
      * 订单创建频率，单位：秒
      */
     private Integer createFrequencySeconds;
-
-//    /**
-//     * 配置描述
-//     */
-//    private String desc;
 
     public Integer getPayTimeoutSeconds() {
         return payTimeoutSeconds;
@@ -39,14 +37,4 @@ public class OrderProperties {
         this.createFrequencySeconds = createFrequencySeconds;
         return this;
     }
-
-//    public String getDesc() {
-//        return desc;
-//    }
-//
-//    public OrderProperties setDesc(String desc) {
-//        this.desc = desc;
-//        return this;
-//    }
-
 }

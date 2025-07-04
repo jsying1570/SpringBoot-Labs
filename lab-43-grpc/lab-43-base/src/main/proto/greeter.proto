@@ -1,0 +1,27 @@
+// 指定使用 proto3 语法
+syntax = "proto3";
+
+// 定义生成 Java 代码的包名和类名
+option java_multiple_files = false;
+option java_package = "com.salter.service";
+option java_outer_classname = "GreeterProto";
+
+// 定义包名，用于组织 .proto 文件
+package greet;
+
+// "Greeter" 服务定义
+service Greeter {
+  // 定义一个 "SayHello" 的 RPC 方法
+  // 它接收 HelloRequest 消息并返回 HelloReply 消息
+  rpc sayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// 请求消息，包含用户的名字
+message HelloRequest {
+  string name = 1;
+}
+
+// 响应消息，包含服务器的问候语
+message HelloReply {
+  string message = 1;
+}
